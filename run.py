@@ -10,10 +10,10 @@ with open('/model/run.sh', 'w') as f:
     videos = os.listdir('/dataset')
 
     for video in videos:
-        Path(f'/model/result/{video}').mkdir(parents=True, exist_ok=True)
-        f.write(f'python3 /model/inference/inference_basicvsr.py --input_path /dataset/{video} --save_path /model/result/{video}\n')
+        f.write(f'mkdir /results/{video}\n')
+        f.write(f'python3 /model/inference/inference_basicvsr.py --input_path /dataset/{video} --save_path /results/{video}\n')
 
-    f.write('chmod 0777 /model/result -R\n')
+    f.write('chmod 0777 /results -R\n')
 
 os.system("chmod 0777 /model/run.sh")
 os.system("/model/run.sh")
