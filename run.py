@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 
-os.system('chmod 0777 /model -R')
+os.system("rm -rf /model/result")
 
 with open('/model/run.sh', 'w') as f:
     f.write('cd /model\n')
@@ -13,7 +13,4 @@ with open('/model/run.sh', 'w') as f:
         f.write(f'mkdir /results/{video}\n')
         f.write(f'python3 /model/inference/inference_basicvsr.py --input_path /dataset/{video} --save_path /results/{video}\n')
 
-    f.write('chmod 0777 /results -R\n')
-
-os.system("chmod 0777 /model/run.sh")
 os.system("/model/run.sh")
